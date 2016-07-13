@@ -1,0 +1,186 @@
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="Hiking">
+<head>
+    <title>Hiking</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="~/ngapp/users/css/login.css" rel="stylesheet" />
+    <link href="~/ngapp/users/css/register.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/trailsdetailss.css" rel="stylesheet" />
+    <link href="~/css/viewprofile.css" rel="stylesheet" />
+    <link href="~/css/blogs.css" rel="stylesheet" />
+    <link href="~/css/trailchanges.css" rel="stylesheet" />
+    <link href="~/css/editprofile.css" rel="stylesheet" />
+    <link href="~/css/gather.css" rel="stylesheet" />
+    <link href="~/css/deleteprofilemodal.css" rel="stylesheet" />
+    <link href="~/css/about1.css" rel="stylesheet" />
+    <link href="~/css/home1.css" rel="stylesheet" />
+    <link href="~/css/home2.css" rel="stylesheet" />
+    <link href="~/css/backpack.css" rel="stylesheet" />
+    <link href="~/css/trekchangescss.css" rel="stylesheet" />
+    <link href="~/css/homepage.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <base href="/" />
+
+
+</head>
+<body ng-controller="accountController as controller" ng-cloak>
+    <div class="container">
+
+        @* start of Navbar *@
+       
+                        
+        <div class="nav">
+            <ul>
+                <img src="~/ngapp/homeimages/mountain-peak-logo-no-clouds-.png"
+                     style="height:45px;float:left" />
+                <li id="home-title">TrekClub </li>
+                <li class="home"><a href="/"><strong>Home</strong></a></li>
+                <li class="about"><a href="about1"><strong>About</strong></a></li>
+                <li>
+                    <div class="dropdown">
+
+                        <button class="dropbtn"><strong>Trails</strong></button>
+                        <div class="dropdown-content">
+                            <a href="/trails">View Trails</a>
+                            <a href="/trailmap">Map of Trails</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+
+                        <button class="dropbtn"><strong>Blogs</strong></button>
+                        <div class="dropdown-content">
+                            <a href="/blogs">View Blogs</a>
+                            <a href="/blogs">Search Blogs</a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+
+                        <button class="dropbtn"><strong>Treks</strong></button>
+                        <div class="dropdown-content">
+                            <a href="/gatherings">View Treks</a>
+                            <a href="/gatherings">Search Treks</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li ng-show="!controller.isLoggedIn()"style="margin-left:200px"><a ng-click="controller.showRegisterModal()"><strong>Register</strong></a></li>
+                <li ng-show="!controller.isLoggedIn()"style="margin-left:0"><a ng-click="controller.showLoginModal()"><strong>Login</strong></a></li>
+
+                <li ng-show="controller.getUserName() != null" class="pull-right navbarfix" style="margin-right:35px">
+                    <div class="dropdown">
+
+                        <button class="dropbtn" id="username">{{controller.getName()}}</button>
+                        <div class="dropdown-content">
+                            <a href="/viewprofile">Profile</a>
+                            <a href="/admin">Admin Page</a>
+                            <a ng-click="controller.logout()">Logout</a>
+                        </div>
+                    </div>
+                </li>
+</ul>
+            @*<ul class="nav navbar-nav navbar-right">
+                <li>Test</li>
+
+
+            </ul>*@
+
+                @*<div class="nav navbar-nav navbar-right navBarMenu" ng-show="controller.getUserName() != null">
+
+
+                    <span uib-dropdown on-toggle="toggled(open)">
+                        <a href id="simple-dropdown" uib-dropdown-toggle class="nav-item navbar-link">
+                            Welcome Back {{controller.getName()}} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+                            <li role="menuitem"><a href="/viewprofile">Profile</a></li>
+                            <br />
+                            <li role="menuitem"><a href="/admin">Admin Page</a></li>
+                            <br />
+                            <li role="menuitem"><a ng-click="controller.logout()">Logout</a></li>
+                        </ul>
+                    </span>
+
+                </div>*@
+      
+
+
+
+
+
+        </div>
+
+        </div>
+
+
+        @* end of navbar *@
+
+
+        <div class="container">
+        <ui-view class="view"></ui-view>
+        </div>
+
+
+        @*@*Footer*@
+
+
+            <div id="footer">
+                <a href="https://www.facebook.com/">
+                <img src="~/images/aboutpagepics/facebook.png"style="border-radius:50px; width:40px; margin-top:5px" /></a>
+                <a href="https://www.instagram.com/">
+                <img src="~/images/aboutpagepics/instagram.png"style="border-radius:50px; width:40px; margin-top:5px" /></a>
+                <a href="https://www.tumblr.com/">
+                <img src="~/images/aboutpagepics/tumblr.png"style="border-radius:50px; width:40px; margin-top:5px" /></a>
+
+            </div>
+    
+
+        @* End of Footer *@
+
+
+
+    <!-- Library Files -->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/angular/angular.js"></script>
+    <script src="~/lib/lodash/dist/lodash.js"></script>
+    <script src="~/lib/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="~/lib/angular-google-maps/dist/angular-google-maps.js"></script>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>*@
+    <script src="~/lib/angular-resource/angular-resource.js"></script>
+    <script src="~/lib/angular-animate/angular-animate.js"></script>
+    <script src="~/lib/angular-touch/angular-touch.js"></script>
+    <script src="~/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="~/lib/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <!-- App Files-->
+    <script src="~/all.js"></script>
+    @*<script src="~/ngapp/app.js"></script>
+        <script src="~/ngapp/controllers/controllers.js"></script>
+        <script src="~/ngapp/services/services.js"></script>
+        <script src="~/ngapp/controllers/trailscontroller.js"></script>
+        <script src="~/ngapp/controllers/traildetailscontroller.js"></script>
+        <script src="~/ngapp/controllers/addeditdeletetrailclientcontroller.js"></script>
+        <script src="~/ngapp/services/trailservice.js"></script>
+
+        <script src="~/ngapp/controllers/profilecontroller.js"></script>
+        <script src="~/ngapp/services/profilesvc.js"></script>*@
+
+    <!-- Security -->
+    @*<script src="~/ngapp/controllers/accountcontroller.js"></script>
+        <script src="~/ngapp/services/accountservice.js"></script>*@
+
+    @* Google Maps API Key *@
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDipwkGrC3bLZpUpEGaqcsIDKu5_AmT7C0&callback=initMap"
+            async defer></script>
+
+</body>
+</html>
